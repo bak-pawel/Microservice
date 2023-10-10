@@ -21,7 +21,7 @@ import java.util.Set;
  *     }
  * }
  */
-@RegisterRestClient(baseUri = "https://stage.code.quarkus.io/api")
+@RegisterRestClient(baseUri = "localhost:8080")
 public interface MyRemoteService {
 
     @GET
