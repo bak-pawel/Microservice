@@ -1,6 +1,9 @@
 plugins {
-    id 'java'
+    id "io.freefair.lombok" version "6.6.1"
     id 'io.quarkus'
+    id 'idea'
+    id 'java'
+    id 'eclipse'
 }
 
 repositories {
@@ -10,32 +13,39 @@ repositories {
 
 dependencies {
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
-    implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
-    implementation 'io.quarkus:quarkus-rest-client-jackson'
-    implementation 'io.quarkus:quarkus-rest-client'
-    implementation 'io.quarkus:quarkus-jacoco'
-    implementation 'io.quarkus:quarkus-jackson'
-    implementation 'io.quarkus:quarkus-arc'
-    testImplementation 'io.quarkus:quarkus-junit5'
-    testImplementation 'io.rest-assured:rest-assured'
+    implementation('io.quarkus:quarkus-resteasy-reactive-jackson',
+            'io.quarkus:quarkus-rest-client-jackson',
+            'io.quarkus:quarkus-rest-client',
+            'io.quarkus:quarkus-jacoco',
+            'io.quarkus:quarkus-jackson',
+            'io.quarkus:quarkus-arc',
+
+            'javax.validation:validation-api:2.0.1.Final',
+            'org.jetbrains:annotations:24.0.1',
+            'io.quarkus:quarkus-resteasy-reactive-jackson',
+            'com.google.code.findbugs:jsr305:3.0.2',
+            "io.quarkus:quarkus-hibernate-orm-panache",
+            "io.quarkus:quarkus-jdbc-mysql"
+    )
+    annotationProcessor("io.quarkus:quarkus-panache-common")
+    testImplementation(
+            'org.mockito:mockito-core:4.10.0',
+            'org.mockito:mockito-junit-jupiter:4.10.0',
+            'org.assertj:assertj-core:3.23.1'
+    )
 }
+
 
 group 'com.bak.paw'
 version '1.0.0-SNAPSHOT'
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
 
-test {
-    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
-}
-compileJava {
-    options.encoding = 'UTF-8'
-    options.compilerArgs << '-parameters'
-}
-
-compileTestJava {
-    options.encoding = 'UTF-8'
+testing {
+    suites {
+        // Configure the built-in test suite
+        test {
+            // Use JUnit Jupiter test framework
+            useJUnitJupiter('5.8.2')
+        }
+    }
 }
