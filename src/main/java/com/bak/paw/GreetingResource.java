@@ -1,30 +1,47 @@
 package com.bak.paw;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
+import java.util.List;
 
-@Path("/hello")
+
+@Path("/book")
 public class GreetingResource {
 
     @Inject
-    BookRepository bookRepository;
+    BookService bookService;
 
-    @GET
-    @Path("/getOneBook")
+    @POST
+    @Path("/getOneBookByName")
+    @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
-    public Book hello() {
-        Book book = bookRepository.findAny();
+    public Book findBookByName(final String name) {
+        Book book = bookService.findAny(name);
         return book;
     }
 
     @GET
-    @Path("/get")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String helloFirst() {
-        return "book";
+    @Path("/getAll")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Book> getAllBooks() {
+        return bookService.findAllFromDb();
+    }
+
+    @POST
+    @Path("/addBook")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Book> addBookToDb(final Book book) {
+        return bookService.addBook(book);
+    }
+
+    @DELETE
+    @Path("/deleteBook")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void delete(final Book book) {
+        bookService.deleteBook(book);
     }
 }
