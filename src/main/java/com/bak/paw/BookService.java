@@ -13,7 +13,7 @@ public class BookService {
     @Inject
     BookRepository bookRepository;
 
-    public Book findAny(final String name) {
+    public Book findByName(final String name) {
         return bookRepository.findAny(name);
     }
 

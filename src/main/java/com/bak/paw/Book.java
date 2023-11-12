@@ -1,14 +1,13 @@
 package com.bak.paw;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "Book")
+@Builder
 public class Book {
     @Id
     Long id;

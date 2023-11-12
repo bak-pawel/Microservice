@@ -17,15 +17,14 @@ public class GreetingResource {
     @Path("/getOneBookByName")
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
-    public Book findBookByName(final String name) {
-        Book book = bookService.findAny(name);
-        return book;
+    public Book findByName(final String name) {
+        return bookService.findByName(name);
     }
 
     @GET
     @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Book> getAllBooks() {
+    public List<Book> getAll() {
         return bookService.findAllFromDb();
     }
 
@@ -33,7 +32,7 @@ public class GreetingResource {
     @Path("/addBook")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Book> addBookToDb(final Book book) {
+    public List<Book> add(final Book book) {
         return bookService.addBook(book);
     }
 
@@ -41,7 +40,7 @@ public class GreetingResource {
     @Path("/deleteBook")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void delete(final Book book) {
-        bookService.deleteBook(book);
+    public Book delete(final Book book) {
+        return bookService.deleteBook(book);
     }
 }
