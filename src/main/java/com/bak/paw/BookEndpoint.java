@@ -1,5 +1,7 @@
 package com.bak.paw;
 
+import com.bak.paw.model.Book;
+import com.bak.paw.service.BookService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -8,7 +10,7 @@ import java.util.List;
 
 
 @Path("/book")
-public class GreetingResource {
+public class BookEndpoint {
 
     @Inject
     BookService bookService;
@@ -32,7 +34,7 @@ public class GreetingResource {
     @Path("/addBook")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Book> add(final Book book) {
+    public Book add(final Book book) {
         return bookService.addBook(book);
     }
 

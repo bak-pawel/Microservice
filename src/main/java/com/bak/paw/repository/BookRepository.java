@@ -1,5 +1,6 @@
-package com.bak.paw;
+package com.bak.paw.repository;
 
+import com.bak.paw.model.Book;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
@@ -26,7 +27,7 @@ public class BookRepository implements PanacheRepository<Book> {
     }
 
     public Book deleteByName(final Book book) {
-        delete("bookName", book.bookName);
+        delete("bookName", book.getBookName());
         return book;
     }
 }

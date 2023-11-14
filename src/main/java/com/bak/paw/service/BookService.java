@@ -1,5 +1,7 @@
-package com.bak.paw;
+package com.bak.paw.service;
 
+import com.bak.paw.model.Book;
+import com.bak.paw.repository.BookRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -21,9 +23,8 @@ public class BookService {
         return bookRepository.findAllFromDb();
     }
 
-    public List<Book> addBook(final Book book) {
-        bookRepository.putDataToDB(book);
-        return findAllFromDb();
+    public Book addBook(final Book book) {
+        return bookRepository.putDataToDB(book);
     }
 
     public Book deleteBook(final Book book) {
