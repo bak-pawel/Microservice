@@ -1,4 +1,4 @@
-package com.bak.paw;
+package com.bak.paw.endpoints;
 
 import com.bak.paw.model.Book;
 import com.bak.paw.service.BookService;
@@ -42,7 +42,7 @@ public class BookEndpoint {
     @Path("/deleteBook")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Book delete(final Book book) {
-        return bookService.deleteBook(book);
+    public void delete(final Book book) {
+         bookService.deleteBook(book);
     }
 }

@@ -26,8 +26,7 @@ public class BookRepository implements PanacheRepository<Book> {
 
     }
 
-    public Book deleteByName(final Book book) {
-        delete("bookName", book.getBookName());
-        return book;
+    public void deleteByName(final Book book) {
+        delete(book);
     }
 }

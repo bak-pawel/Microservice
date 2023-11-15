@@ -27,7 +27,7 @@ public class BookService {
         return bookRepository.putDataToDB(book);
     }
 
-    public Book deleteBook(final Book book) {
-        return bookRepository.deleteByName(book);
+    public void deleteBook(final Book book) {
+        bookRepository.deleteByName(book);
     }
 }

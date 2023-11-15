@@ -1,5 +1,6 @@
 package com.bak.paw;
 
+import com.bak.paw.endpoints.BookEndpoint;
 import com.bak.paw.model.Book;
 import com.bak.paw.service.BookService;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,6 @@
 package com.bak.paw.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -9,8 +8,8 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "Book")
-public class Book {
+@Table(name = "Users")
+public class Users {
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "UUID")
@@ -19,12 +18,19 @@ public class Book {
     public UUID id;
 
     @Column
-    String bookName;
+    String firstName;
 
     @Column
-    String author;
+    String lastName;
 
     @Column
-    String pageAmount;
+    String street;
+
+    @Column
+    String homeNumber;
+
+    @Column
+    long flatNumber;
+
 
 }
