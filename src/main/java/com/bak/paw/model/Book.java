@@ -16,7 +16,7 @@ public class Book {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator")
-    public UUID id;
+    public String id;
 
     @Column
     String bookName;

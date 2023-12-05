@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.UUID;
 
 @ApplicationScoped
 @ParametersAreNonnullByDefault
